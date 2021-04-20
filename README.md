@@ -24,12 +24,10 @@ See https://www.passwordstore.org/ for further detail.
 3. Re-encode the vault:
 
    ```
-   /vpass init $(cat vault/.gpg-id)
+   ./vencrypt
    ```
 
-   Ignore "could not open directory" and "fatal: pathspec" errors.
-
-4. Commit the new vault and push to GitHub
+4. Commit changes and push to GitHub
 
 ## List existing recipients
 
