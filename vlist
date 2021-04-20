@@ -1,0 +1,31 @@
+#!/bin/env python
+
+# Script to look up each key in a gpg-id file
+# and print its associated email
+
+import subprocess
+
+GPG_ID='vault/.gpg-id'
+
+
+def print_UIDs():
+    keys = open(GPG_ID, 'r').readlines()
+    keys = [k.strip() for k in keys]
+    keys = [k for k in keys if k]
+
+    print(f'Keys in `{GPG_ID}`:\n')
+    for key in keys:
+        p = subprocess.run(['gpg', '--list-keys', '--with-colons', key],
+                           capture_output=True)
+        if p.returncode != 0:
+            print(f'{key}: could not look up user id')
+            continue
+
+        output = p.stdout.decode('utf-8').split('\n')
+        uids = [line for line in output if line.startswith('uid')]
+        uid = uids[0].split(':')[9]
+        print(f'{key}: {uid}')
+
+
+if __name__ == '__main__':
+    print_UIDs()
