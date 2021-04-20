@@ -1,5 +1,10 @@
 # Key store for NumPy
 
+## Requirements
+
+- git
+- [pass](https://www.passwordstore.org/)
+
 ## Add/edit a new password
 
 ```
