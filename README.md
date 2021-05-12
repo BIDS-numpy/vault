@@ -1,5 +1,13 @@
 # Key store for NumPy
 
+## Initial vault creation
+
+```
+./vpass init <your-gpg-id>
+```
+
+Ignore pathspec errors.
+
 ## Add/edit a new password
 
 ```
